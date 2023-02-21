@@ -14,7 +14,7 @@ A blog site where users can post and comment on anything tech, Model-View-Contro
   - [License](#License)
 
 ## Description
-  This application uses Model-View-Control to allow users to post and comment on stories about different types of technology. Handlebars.js as the template language, Sequelize for data modeling, and express-session for authentication.
+  This application uses Model-View-Control to allow users to post and comment on stories about different types of technology. Handlebars.js as the template engine, Sequelize for data modeling, and express-session for authentication.
   
   Deployed app Link:  
   
