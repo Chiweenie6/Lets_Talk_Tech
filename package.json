@@ -1,0 +1,31 @@
+{
+  "name": "lets_talk_tech",
+  "version": "1.0.0",
+  "description": "A blog site where users can post and comment on anything tech, Model-View-Controller built with Handlebars.js, Sequelize and express-session.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chiweenie6/Lets_Talk_Tech.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chiweenie6/Lets_Talk_Tech/issues"
+  },
+  "homepage": "https://github.com/Chiweenie6/Lets_Talk_Tech#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.7",
+    "mysql2": "^3.1.2",
+    "sequelize": "^6.28.0"
+  }
+}
