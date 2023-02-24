@@ -12,12 +12,12 @@ router.get("/", async (req, res) => {
       }
       ]
     });
-
+// Serializing or makeing it simpler to read
     const postList = postInfo.map((post) => post.get({ plain: true }));
 
     res.render("homepage", {
       postList,
-      loggedIn: req.session.loggedIn
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(505).json(err);
@@ -33,10 +33,10 @@ router.get("/posts/:id", async (req, res) => {
         attributes: ["username"]
       }]
     });
-    const postList = postList.get({plain: true});
+    const postList = postInfo.get({plain: true});
     res.render("post", {
-      ...this.post,
-      loggedIn: req.session.loggedIn
+      ...postList,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(505).jsonn(err);
@@ -44,7 +44,7 @@ router.get("/posts/:id", async (req, res) => {
 });
 
 // Must authenticate username to use routes
-router.get("/user", authenticate, async (req, res) => {
+router.get("/profile", authenticate, async (req, res) => {
   try {
     const userInfo = await User.findByPk(req.session.user_id, {
       attributes: {exclude: ["password"]},
@@ -52,9 +52,9 @@ router.get("/user", authenticate, async (req, res) => {
     });
     const userList = userInfo.get({plain: true});
 
-    res.render("user", {
-      ...userInfo,
-      loggedIn: true
+    res.render("profile", {
+      ...userList,
+      logged_in: true
     });
   } catch (err) {
     res.status(505).json(err);
@@ -63,8 +63,8 @@ router.get("/user", authenticate, async (req, res) => {
 
 // already logged in
 router.get("/login", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
+  if (req.session.logged_in) {
+    res.redirect("/profile");
     return;
   }
   res.render("login");
