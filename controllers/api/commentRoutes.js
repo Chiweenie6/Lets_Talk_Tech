@@ -2,11 +2,12 @@ const router = require("express").Router();
 const { Comment } = require("../../models");
 const authenticate = require("../../utils/authenticate")
 
+// Must be logged in to post a comment
 router.post("/", authenticate, async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
-      user_id: req.session.user_id,
+      user_id: req.session.user_id
     });
     res.status(202).json(newComment);
   } catch (err) {
@@ -14,6 +15,7 @@ router.post("/", authenticate, async (req, res) => {
   }
 });
 
+// Must be logged in to delete a comment
 router.delete("/:id", authenticate, async (req, res) => {
   try {
     const findComment = await Comment.destroy({

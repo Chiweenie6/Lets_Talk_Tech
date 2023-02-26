@@ -3,19 +3,19 @@ const newPostOutline = async (event) => {
 
     const title = document.getElementById("post-title").value.trim();
     const content = document.getElementById("post-content").value.trim();
-    const username = document.getElementById("post-username").value.trim();
+    // const username = document.getElementById("post-username").value.trim();
 
-    if (title && content && username) {
-        const postInfo = await fetch("/api/post", {
+    if (title && content) {
+        const postInfo = await fetch("/api/posts", {
             method: "POST",
-            body: JSON.stringify({title, content, username}),
+            body: JSON.stringify({title, content}),
             headers: {"Content-Type": "application/json"}
         });
 
         if (postInfo.ok) {
             document.location.replace("/profile");
         }else {
-            alert(postInfo.statusText)
+            alert("Could not create Post 🚫")
         }
     }
 };
@@ -23,14 +23,14 @@ const newPostOutline = async (event) => {
 const deletePostButton = async (event) => {
     if (event.target.hasAttribute("data-id")) {
         const id = event.target.getAttribute("data-id");
-        const postDelete = await fetch("/api/posts/${id}", {
+        const postDelete = await fetch(`/api/posts/${id}`, {
             method: "DELETE"
         });
 
         if (postDelete.ok) {
             document.location.replace("/profile");
         } else {
-            alert(postDelete.statusText);
+            alert("Could not delete Post 🚫");
         }
     }
 };

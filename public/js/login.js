@@ -1,4 +1,4 @@
-// Get data from login form
+// Login to existing profile
 const loginForm = async (info) => {
   info.preventDefault();
 
@@ -21,6 +21,7 @@ const loginForm = async (info) => {
   }
 };
 
+// Create new profile
 const signUpForm = async (event) => {
   event.preventDefault();
 
@@ -42,6 +43,6 @@ const signUpForm = async (event) => {
   }
 }
 
-document.querySelector(".loginForm").addEventListener("submit", loginForm);
+document.querySelector(".login-form").addEventListener("submit", loginForm);
 
 document.querySelector(".signup-form").addEventListener("submit", signUpForm)

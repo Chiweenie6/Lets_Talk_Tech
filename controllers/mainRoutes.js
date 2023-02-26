@@ -9,15 +9,14 @@ router.get("/", async (req, res) => {
       include : [{
         model: User,
         attributes: ["username"]
-      }
-      ]
+      }]
     });
 
 // Serializing or makeing it simpler to read
-    const postList = postInfo.map((post) => post.get({ plain: true }));
+    const posts = postInfo.map((post) => post.get({ plain: true }));
 
     res.render("homepage", {
-      postList,
+      posts,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -35,14 +34,14 @@ router.get("/post/:id", async (req, res) => {
       }]
     });
 
-    const postList = postInfo.get({plain: true});
+    const post = postInfo.get({plain: true});
 
     res.render("post", {
-      ...postList,
+      ...post,
       logged_in: req.session.logged_in
     });
   } catch (err) {
-    res.status(505).jsonn(err);
+    res.status(505).json(err);
   }
 });
 
@@ -64,7 +63,7 @@ router.get("/profile", authenticate, async (req, res) => {
   }
 })
 
-// already logged in, go to profile
+// After logging in go to profile page
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/profile");
