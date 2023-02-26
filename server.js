@@ -30,7 +30,7 @@ const expSession = {
 
 app.use(session(expSession));
 
-// Inform Express.js which template engine to use
+// Inform Express.js which template to use
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 

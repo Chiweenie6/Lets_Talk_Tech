@@ -12,6 +12,7 @@ router.get("/", async (req, res) => {
       }
       ]
     });
+
 // Serializing or makeing it simpler to read
     const postList = postInfo.map((post) => post.get({ plain: true }));
 
@@ -25,7 +26,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get posts by id
-router.get("/posts/:id", async (req, res) => {
+router.get("/post/:id", async (req, res) => {
   try {
     const postInfo = await Post.findByPk(req.params.id, {
       include: [{
@@ -33,7 +34,9 @@ router.get("/posts/:id", async (req, res) => {
         attributes: ["username"]
       }]
     });
+
     const postList = postInfo.get({plain: true});
+
     res.render("post", {
       ...postList,
       logged_in: req.session.logged_in
@@ -50,10 +53,10 @@ router.get("/profile", authenticate, async (req, res) => {
       attributes: {exclude: ["password"]},
       include: [{model: Post}]
     });
-    const userList = userInfo.get({plain: true});
+    const user = userInfo.get({plain: true});
 
     res.render("profile", {
-      ...userList,
+      ...user,
       logged_in: true
     });
   } catch (err) {
@@ -61,7 +64,7 @@ router.get("/profile", authenticate, async (req, res) => {
   }
 })
 
-// already logged in
+// already logged in, go to profile
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/profile");

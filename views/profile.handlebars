@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Hello, {{username}} 😀</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Make New Post:</h3>
+
+    <form class="form new-post-form">
+      <div class="form-group">
+        <label for="post-title">Post title:</label>
+        <input class="form-input" type="text" id="post-title" name="post-title" />
+      </div>
+      <div class="form-group">
+        <label for="post-content">Content:</label>
+        <input class="form-input" type="text" id="post-content" name="post-content" />
+      </div>
+      <div class="form-group">
+        <label for="post-username">Username:</label>
+        <textarea class="form-input" id="post-username" name="post-username"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create Post</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if posts.length}}
+  <div class="col-md-6 post-list">
+    <h3>My posts:</h3>
+
+    {{#each posts as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/post/{{post.id}}">{{post.username}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="/Lets_Talk_Tech/public/js/profile.js"></script>
