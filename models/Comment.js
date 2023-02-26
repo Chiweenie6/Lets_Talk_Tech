@@ -11,11 +11,7 @@ Comment.init(
       autoIncrement: true,
       allowNull: false,
     },
-    comment: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    username: {
+    opinion: {
       type: DataTypes.STRING,
       allowNull: false,
     },

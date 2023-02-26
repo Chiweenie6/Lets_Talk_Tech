@@ -17,10 +17,6 @@
         <label for="post-content">Content:</label>
         <input class="form-input" type="text" id="post-content" name="post-content" />
       </div>
-      {{!-- <div class="form-group">
-        <label for="post-username">Username:</label>
-        <textarea class="form-input" id="post-username" name="post-username"></textarea>
-      </div> --}}
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create Post</button>
       </div>
@@ -44,5 +40,25 @@
   </div>
   {{/if}}
 </div>
+
+<div>
+  {{#if comments.length}}
+  <div class="col-md-6 comment-list">
+    <h3>My Comments:</h3>
+
+    {{#each comments as |comment|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/comment/{{comment.id}}">{{comment.opinion}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{comment.id}}">Delete</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
 
 <script src="./js/profile.js"></script>
