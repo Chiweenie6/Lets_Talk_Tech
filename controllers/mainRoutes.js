@@ -5,7 +5,7 @@ const authenticate = require("../utils/authenticate");
 // Join Posts with user info
 router.get("/", async (req, res) => {
   try {
-    const postInfo = await Post.findAll({
+    const findPost = await Post.findAll({
       include : [{
         model: User,
         attributes: ["username"]
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     });
 
 // Serializing or makeing it simpler to read
-    const posts = postInfo.map((post) => post.get({ plain: true }));
+    const posts = findPost.map((post) => post.get({ plain: true }));
 
     res.render("homepage", {
       posts,
@@ -25,16 +25,16 @@ router.get("/", async (req, res) => {
 });
 
 // Get Posts by id
-router.get("/post/:id", authenticate, async (req, res) => {
+router.get("/posts/:id", authenticate, async (req, res) => {
   try {
-    const postInfo = await Post.findByPk(req.params.id, {
+    const findPost = await Post.findByPk(req.params.id, {
       include: [{
         model: User,
         attributes: ["username"]
       }]
     });
 
-    const post = postInfo.get({plain: true});
+    const post = findPost.get({plain: true});
 
     res.render("post", {
       ...post,
@@ -45,72 +45,26 @@ router.get("/post/:id", authenticate, async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-// Join Comments with user info
-router.get("/", async (req, res) => {
+// Update post by post.id
+router.get("/posts/update/:id", authenticate, async (req, res) => {
   try {
-    const commentInfo = await Comment.findAll({
-      include : [{
-        model: User,
-        attributes: ["username"]
-      }]
-    });
-
-// Serializing or makeing it simpler to read
-    const comments = commentInfo.map((comment) => comment.get({ plain: true }));
-
-    res.render("homepage", {
-      comments,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(505).json(err);
-  }
-});
-
-// Get Comments by id
-router.get("/comment/:id", authenticate, async (req, res) => {
-  try {
-    const commentInfo = await Comment.findByPk(req.params.id, {
+    const findPost = await Post.findByPk(req.params.id, {
       include: [{
         model: User,
         attributes: ["username"]
       }]
     });
+    
+    const post = findPost.get({plain: true});
 
-    const comment = commentInfo.get({plain: true});
-
-    res.render("comment", {
-      ...comment,
+    res.render("updatePost", {
+      ...post,
       logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(505).json(err);
   }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+})
 
 // Must authenticate username to use routes
 router.get("/profile", authenticate, async (req, res) => {

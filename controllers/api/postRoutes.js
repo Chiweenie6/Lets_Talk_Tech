@@ -15,6 +15,25 @@ router.post("/", authenticate, async (req, res) => {
   }
 });
 
+// Update existing post
+router.put("/:id", authenticate, async (req, res)=> {
+  try {
+    const findPost = await Post.update(req.body, {
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id
+      }
+    });
+    if (!findPost) {
+      res.status(404).json({ message: "Post ID Not Found 🚫" });
+      return;
+    }
+    res.status(202).json(findPost);
+  } catch (err) {
+    res.status(505).json(err);
+  }
+});
+
 // Delete existing post from signed in profile
 router.delete("/:id", authenticate, async (req, res) => {
   try {
