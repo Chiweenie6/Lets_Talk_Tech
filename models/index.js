@@ -15,8 +15,12 @@ User.hasMany(Comment, {
 });
 
 Post.hasMany(Comment, {
-  foreignKey: "comment_id"
-})
+  foreignKey: "post_id"
+});
+
+Comment.belongsTo(Post, {
+  foreignKey: "post_id"
+});
 
 Post.belongsTo(User, {
   foreignKey: "user_id",

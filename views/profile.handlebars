@@ -24,7 +24,7 @@
   </div>
 
   {{#if posts.length}}
-  <div class="col-md-6 post-list">
+  <div class="col-md-6 post-list update-post">
     <h3>My posts:</h3>
 
     {{#each posts as |post|}}
@@ -34,12 +34,14 @@
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{post.id}}">Delete</button>
+        <button class="btn btn-sm btn-warning" data-id="{{post.id}}">Update</button>
       </div>
     </div>
     {{/each}}
   </div>
   {{/if}}
 </div>
+
 
 {{!-- <div>
   {{#if comments.length}}
