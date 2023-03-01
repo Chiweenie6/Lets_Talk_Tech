@@ -2,20 +2,40 @@
 const newCommentOutline = async (event) => {
     event.preventDefault();
 
+    const postID = document.getElementById("post-id").value;
     const opinion = document.getElementById("comment-opinion").value.trim();
 
     if(opinion) {
         const commentInfo = await fetch("/api/comments", {
             method: "POST",
-            body: JSON.stringify({opinion}),
+            body: JSON.stringify({postID, opinion}),
             headers: {"Content-Type": "application/json"}
         });
 
-        if (commentInfo.ok) {
-            document.location.reload();
-        } else {
-            alert("Could not create Comment 🚫");
-        }
+
+        const oldComment = await fetch(`/api/comments/${postID}`);
+        const {comments} = await oldComment.json();
+        const opinionArea = document.getElementById("comment-opinion");
+
+
+        opinionArea.innerHTML = "";
+        comments.forEach(comment => {
+            const commentOpinion = document.createElement("div");
+            commentOpinion.innerHTML = `<p>${comment.opinion}</p>
+            <p> ${comment.User.username}, ${format_date(comment.date_created)}</p>`;
+            opinionArea.appendChild(commentOpinion);
+        });
+
+        document.getElementById("comment-opinion").value = "";
+
+
+
+
+        // if (commentInfo.ok) {
+        //     document.location.reload();
+        // } else {
+        //     alert("Could not create Comment 🚫");
+        // }
     }
 };
 

@@ -9,7 +9,11 @@ router.get("/", async (req, res) => {
       include : [{
         model: User,
         attributes: ["username"]
-      }]
+      },
+    {
+      model: Comment,
+      include: [User]
+    }]
     });
 
 // Serializing or makeing it simpler to read
@@ -31,7 +35,11 @@ router.get("/posts/:id", authenticate, async (req, res) => {
       include: [{
         model: User,
         attributes: ["username"]
-      }]
+      },
+    {
+      model: Comment,
+      include: [User] 
+    }]
     });
 
     const post = findPost.get({plain: true});
@@ -46,25 +54,40 @@ router.get("/posts/:id", authenticate, async (req, res) => {
 });
 
 // Update post by post.id
-router.get("/posts/update/:id", authenticate, async (req, res) => {
+router.get("/updatePost/:id", authenticate, async (req, res) => {
   try {
-    const findPost = await Post.findByPk(req.params.id, {
-      include: [{
-        model: User,
-        attributes: ["username"]
-      }]
-    });
-    
+    const findPost = await Post.findByPk(req.params.id);
     const post = findPost.get({plain: true});
 
     res.render("updatePost", {
-      ...post,
+      layout: "main",
+      post,
       logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(505).json(err);
   }
-})
+
+  // try {
+  //   const findPost = await Post.findByPk(req.params.id)
+  //   .then(findPost => {
+  //     if (findPost) {
+  //       const post = findPost.get({plain: true});
+  //       res.render("updatePost", {
+  //         layout: "main",
+  //         post
+  //       });
+  //     } else {
+  //       res.status(404).end();
+  //     }
+  //   })
+  // } catch (err) {
+  //   res.status(505).json(err);
+  // }
+});
+
+
+
 
 // Must authenticate username to use routes
 router.get("/profile", authenticate, async (req, res) => {

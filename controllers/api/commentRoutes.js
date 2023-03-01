@@ -3,7 +3,7 @@ const { Comment } = require("../../models");
 const authenticate = require("../../utils/authenticate")
 
 // Create a new comment
-router.post("/", async (req, res) => {
+router.post("/posts/:postId", async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
 });
 
 // Must be logged in to update a comment
-router.put("/:id", authenticate, async (req, res) => {
+router.put("/:postId", authenticate, async (req, res) => {
   try {
     const findComment = await Comment.update({
       where: {
@@ -36,7 +36,7 @@ router.put("/:id", authenticate, async (req, res) => {
 });
 
 // Must be logged in to delete a comment
-router.delete("/:id", authenticate, async (req, res) => {
+router.delete("/post:Id", authenticate, async (req, res) => {
   try {
     const findComment = await Comment.destroy({
       where: {

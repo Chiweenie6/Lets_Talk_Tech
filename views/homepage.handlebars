@@ -3,20 +3,7 @@
   <div class="row mb-4 post d-flex justify-content-center">
     <div class="col-md-5 entry" id="">
       <h2>
-
-
-
-
        <a href="/posts/{{post.id}}">{{post.title}}</a>
-
-
-
-
-        {{!-- {{#if logged_in}}
-          <a href="/posts/{{post.id}}">{{post.title}}</a>
-        {{else}}
-          <a href="/login">Login 🎈</a>
-        {{/if}} --}}
       </h2>
       <h6>Created by
         {{post.user.username}}
@@ -28,8 +15,6 @@
           {{post.content}}
         </p>
       </div>
-
     </div>
-
   </div>
 {{/each}}

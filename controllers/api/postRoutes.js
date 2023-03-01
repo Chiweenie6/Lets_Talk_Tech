@@ -16,7 +16,7 @@ router.post("/", authenticate, async (req, res) => {
 });
 
 // Update existing post
-router.put("/:id", authenticate, async (req, res)=> {
+router.put("/:id", authenticate, async (req, res) => {
   try {
     const findPost = await Post.update(req.body, {
       where: {
@@ -25,7 +25,7 @@ router.put("/:id", authenticate, async (req, res)=> {
       }
     });
     if (!findPost) {
-      res.status(404).json({ message: "Post ID Not Found 🚫" });
+      res.status(404).json({message: "Could not Update Post 🚫"});
       return;
     }
     res.status(202).json(findPost);
