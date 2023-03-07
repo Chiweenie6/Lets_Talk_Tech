@@ -1,86 +1,79 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Hello, {{username}} 😀</h2>
+<style>
+  body {
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+
+{{!-- Profile page, when signed in --}}
+<div style="background-color: white;">
+<div class="row d-flex justify-content-center">
+  <div class="p-2 w-75 text-center">
+    <h2 class="text-success fs-1">Hello, {{name}}! 😀</h2>
+  </div>
+</div>
+<div class="row d-flex justify-content-center">
+  <div class="p-2 w-50 text-center">
+    <a href="/profile/createPost" class="titleSize">➕ Add New Post ✏️</a>
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Make New Post:</h3>
-
-    <form class="form " id="new-post-outline">
-      <div class="form-group">
-        <label for="post-title">Post title:</label>
-        <input class="form-input" type="text" id="post-title" name="post-title" />
-      </div>
-      <div class="form-group">
-        <label for="post-content">Content:</label>
-        <textarea class="form-input" type="text" id="post-content" name="post-content" /></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create Post</button>
-      </div>
-    </form>
-  </div>
-
+<div>
   {{#if posts.length}}
-  <div class="col-md-6 post-list">
-    <h3>My Posts:</h3>
-
-    {{#each posts as |post|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/posts/{{post.id}}">{{post.title}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger post-list" data-id="{{post.id}}">Delete</button>
-        <a href="/updatePost/{{post.id}}" class="btn btn-sm btn-warning update-post" data-id="{{post.id}}">Update</a>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-  {{/if}}
-</div>
-
-{{#if posts.length}}
-  <div class="col-md-6 update-post">
+  <div class="post-list row d-flex justify-content-center">
+    <div class="d-flex flex-column mb-3 w-50">
     <h3>My posts:</h3>
 
     {{#each posts as |post|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/posts/{{post.id}}">{{post.title}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <a  href="/updatePost/{{post.id}}" class="btn btn-sm btn-warning update-post" data-id="{{post.id}} ">Update</a>
+    <div class="row d-flex">
+      <div class="d-flex justify-content-between">
+        <h4><a href="/posts/{{post.id}}">✏️ {{post.title}}</a></h4>
+        <div class="row align-self-end">
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+        <div class="update-post">
+          <a href="/updatePost/{{post.id}}" class="btn btn-sm btn-info">Update</a>
+        </div>
+        </div>
       </div>
     </div>
     {{/each}}
   </div>
   {{/if}}
 </div>
+<br>
+<br>
+<br>
+</div>
+</div>
 
 
-<div>
+<div style="background-color: white;">
+  <div>
   {{#if comments.length}}
-  <div class="col-md-6 comment-list">
-    <h3>My Comments:</h3>
+  <div class="comment-list row d-flex justify-content-center">
+    <div class="d-flex flex-column mb-3 w-50">
+    <h3>My comments:</h3>
 
     {{#each comments as |comment|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/comment/{{comment.id}}">{{comment.opinion}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{comment.id}}">Delete</button>
+    <div class="row d-flex">
+      <div class="d-flex justify-content-between">
+        <h4><a href="/comments/{{comment.id}}">💬 {{comment.title}}</a></h4>
+        <div class="row align-self-end">
+        <button class="btn btn-sm btn-danger" data-id="{{comment.id}}">DELETE</button>
+        <div class="update-comment">
+          <a href="/updatecomment/{{comment.id}}" class="btn btn-sm btn-info">Update</a>
+        </div>
+        </div>
       </div>
     </div>
     {{/each}}
   </div>
   {{/if}}
 </div>
-
-
-<script src="./js/profile.js"></script>
-<script src="./js/updatePost.js"></script>
-<script src="./js/addComment.js"></script>
+<br>
+<br>
+<br>
+</div>
+</div>
+</div>

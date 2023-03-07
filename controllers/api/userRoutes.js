@@ -4,11 +4,7 @@ const { User } = require("../../models");
 // Create new profile
 router.post("/", async (req, res) => {
   try {
-    const userInfo = await User.create(
-      {
-      username: req.body.username,
-      password: req.body.password
-    });
+    const userInfo = await User.create(req.body);
 
     req.session.save(() => {
       req.session.user_id = userInfo.id;
@@ -31,7 +27,7 @@ router.post("/login", async (req, res) => {
 
     if (!userInfo) {
       res.status(404).json({ 
-        message: "Username or password is incorrect 🚫"});
+        message: "🚫 Username or password is incorrect 🚫"});
       return;
     }
 
@@ -39,7 +35,7 @@ router.post("/login", async (req, res) => {
 
     if (!userPassword) {
       res.status(404).json({ 
-        message: "Username or password is incorrect 🚫"});
+        message: "🚫 Username or password is incorrect 🚫"});
       return;
     }
 

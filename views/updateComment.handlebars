@@ -1,0 +1,19 @@
+<form id="update-comment-form" class="card">
+    <div class="card-header">
+      <h3>Update Comment</h3>
+    </div>
+
+    <div class="card-body">
+      <input type="hidden" name="comment-id" id="comment-id" value="{{comment.id}}"/>
+
+      <label class="form-label" for="comment-opinion" style="font-weight: bold;">Comment Opinion</label>
+
+      <textarea name="comment-opinion" class="form-input" id="comment-opinion"
+      >{{comment.opinion}}</textarea>
+
+      <button id="comment-save" type="submit" class="btn btn-success">Update
+        Comment</button>
+        <a href="/profile" type="button" id="" class="btn btn-danger">Cancel</a>
+    </div>
+  </form>
+</div>

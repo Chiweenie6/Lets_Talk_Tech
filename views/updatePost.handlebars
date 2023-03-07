@@ -1,26 +1,46 @@
-<div class="container">
-  <h2>Update Post</h2>
-<form id="update-post">
-  <div class="field">
-    <div class="field">
+
+{{!-- <div class="post card">
+  <div class="card-header">
+    <h2>Edit Post</h2>
+  </div>
+  <form id="update-post-outline" class="card-body">
+    <input type="hidden" id="post-id" value="{{post.id}}" />
+
+    <label class="form-label" for="post-title">Title</label>
+    <input type="text" id="post-title" value="{{post.title}}" class="form-input" />
+
+    <label class="form-label" for="post-body">Content</label>
+    <textarea id="post-content" class="form-input">{{post.content}}</textarea>
+
+    <button type="submit" class="btn">Update</button>
+    <a href="/profile" type="button" id="" class="btn">Cancel</a>
+  </form>
+</div> --}}
+
+
+{{!-- For for updating existing post --}}
+<div class="row d-flex justify-content-center">
+  <div class="d-flex flex-column mb-3 w-50">
+    <h3 class="text-center text-success titleSize">Update Existing Post:</h3>
+
+<div class="px-5 pt-3" style="background-image: url(''); background-repeat:no-repeat; background-size: contain;">
+    <form class="form pb-5 px-5" id="new-post-outline">
       <input type="hidden" id="post-id" value="{{post.id}}"/>
-      <label class="label post-title" for="post-title">Title</label>
-      <div class="control">
-        <input type="text" class="form-input" id="post-title" value="{{post.title}}"/>
+      <div class="form-group">
+        <label for="post-title" style="font-weight: bold;">Post Title:</label>
+        <input class="form-input" type="text" id="post-title" name="post-title" value="{{post.title}}"/>
       </div>
-    </div>
-        <div class="field">
-      <label class="label post-content">Content</label>
-      <div class="control">
-        <textarea class="form-input" id="post-content" value=""/>{{post.content}}</textarea>
+      <div class="form-group">
+        <label for="post-content" style="font-weight: bold;">Content:</label>
+        <textarea class="form-input" type="text" id="post-content" name="post-content"/>{{post.content}}</textarea>
       </div>
+      <div class="form-group d-flex justify-content-center">
+        <div>
+        <button type="submit" class="btn btn-success">Update Post</button>
+        <a href="/profile" type="button" id="" class="btn btn-danger">Cancel</a>
+        </div>
+      </div>
+    </form>
     </div>
   </div>
-  <div class="field">
-    <div class="buttons">
-      <button type="submit" class=" button is-medium is-success">Save Changes</button>
-      <a href="/profile" class="button is-medium is-danger">Cancel</a>
-    </div>
-  </div>
-</form>
 </div>

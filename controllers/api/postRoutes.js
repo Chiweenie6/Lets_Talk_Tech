@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Post } = require("../../models");
-const authenticate = require("../../utils/authenticate")
+const authenticate = require("../../utils/authenticate");
 
 // Create new post from signed in profile
 router.post("/", authenticate, async (req, res) => {
@@ -18,14 +18,23 @@ router.post("/", authenticate, async (req, res) => {
 // Update existing post
 router.put("/:id", authenticate, async (req, res) => {
   try {
-    const findPost = await Post.update(req.body, {
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id
+    const findPost = await Post.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
+      },
+      {
+        where: {
+          id: req.params.id,
+          user_id: req.session.user_id,
+        },
       }
+    ).then((updatePost) => {
+      res.json(updatePost);
     });
+
     if (!findPost) {
-      res.status(404).json({message: "Could not Update Post 🚫"});
+      res.status(404).json({ message: "Could not Update Post 🚫" });
       return;
     }
     res.status(202).json(findPost);
@@ -40,8 +49,8 @@ router.delete("/:id", authenticate, async (req, res) => {
     const findPost = await Post.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id
-      }
+        user_id: req.session.user_id,
+      },
     });
 
     if (!findPost) {

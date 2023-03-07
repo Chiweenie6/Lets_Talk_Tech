@@ -3,7 +3,7 @@ const { Comment } = require("../../models");
 const authenticate = require("../../utils/authenticate")
 
 // Create a new comment
-router.post("/posts/:postId", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
@@ -16,7 +16,7 @@ router.post("/posts/:postId", async (req, res) => {
 });
 
 // Must be logged in to update a comment
-router.put("/:postId", authenticate, async (req, res) => {
+router.put("/:id", authenticate, async (req, res) => {
   try {
     const findComment = await Comment.update({
       where: {
@@ -26,7 +26,7 @@ router.put("/:postId", authenticate, async (req, res) => {
     });
 
     if (!findComment) {
-      res.status(404).json({ message: "Comment ID Not Found 🚫" });
+      res.status(404).json({ message: "🚫 Comment ID Not Found 🚫" });
       return;
     }
     res.status(202).json(findComment);
@@ -36,7 +36,7 @@ router.put("/:postId", authenticate, async (req, res) => {
 });
 
 // Must be logged in to delete a comment
-router.delete("/post:Id", authenticate, async (req, res) => {
+router.delete("/id", authenticate, async (req, res) => {
   try {
     const findComment = await Comment.destroy({
       where: {
@@ -46,7 +46,7 @@ router.delete("/post:Id", authenticate, async (req, res) => {
     });
 
     if (!findComment) {
-      res.status(404).json({ message: "Comment ID Not Found 🚫" });
+      res.status(404).json({ message: "🚫 Comment ID Not Found 🚫" });
       return;
     }
     res.status(202).json(findComment);

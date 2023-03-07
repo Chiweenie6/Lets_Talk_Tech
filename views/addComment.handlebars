@@ -1,0 +1,31 @@
+{{!-- Form for adding new comment to post --}}
+<div>
+  <div class="row d-flex justify-content-center">
+    <div class="post d-flex flex-column mb-3 w-50">
+      <div class="align-self-center">
+        <h2 class="text-center text-success fs-1">🚩 {{title}}</h2>
+      </div>
+    </div>
+  </div>
+
+  <form id="new-comment-form" class="card">
+    <div class="card-header">
+      <h3>Add New Comment</h3>
+    </div>
+
+    <div class="card-body">
+      <input type="hidden" name="post_id" value="{{id}}" />
+
+      <label class="form-label" for="comment-opinion">Comment</label>
+
+      <textarea
+        name="comment-opinion"
+        class="form-input"
+        id="comment-opinion"
+      ></textarea>
+
+      <button id="comment-save" type="submit" class="btn btn-primary">Add
+        Comment</button>
+    </div>
+  </form>
+</div>
