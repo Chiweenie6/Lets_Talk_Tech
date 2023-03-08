@@ -22,20 +22,22 @@ router.post("/", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const userInfo = await User.findOne({
-      where: {username: req.body.username}
+      where: { username: req.body.username },
     });
 
     if (!userInfo) {
-      res.status(404).json({ 
-        message: "🚫 Username or password is incorrect 🚫"});
+      res.status(404).json({
+        message: "🚫 Username or password is incorrect 🚫",
+      });
       return;
     }
 
     const userPassword = await userInfo.checkPassword(req.body.password);
 
     if (!userPassword) {
-      res.status(404).json({ 
-        message: "🚫 Username or password is incorrect 🚫"});
+      res.status(404).json({
+        message: "🚫 Username or password is incorrect 🚫",
+      });
       return;
     }
 
@@ -43,9 +45,9 @@ router.post("/login", async (req, res) => {
       req.session.user_id = userInfo.id;
       req.session.username = userInfo.username;
       req.session.logged_in = true;
-      
+
       res.json({ user: userInfo, message: "Hurray! 🎉 You're logged in." });
-      });
+    });
   } catch (err) {
     res.status(404).json(err);
   }

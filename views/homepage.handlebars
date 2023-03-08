@@ -1,37 +1,39 @@
-<h1 class="title fs-1 text-primary">Tech Topics</h1>
+<h1 class="title fs-1 text-success text-center">Tech Topics</h1>
 
 <!-- Loop over each post in the posts array and display each post -->
 {{#each posts as |post|}}
   <div
-    class="row d-flex justify-content-center page"
+    class="row d-flex justify-content-center"
     style="background-image: url(''); background-repeat:no-repeat; background-size: 100%"
   >
-    <div class="post d-flex flex-column w-50 mt-5 p-5">
-      <div class="align-self-center container">
-          <img
-            src="{{post.image}}"
-            class="rounded mx-auto d-block"
-            style="max-width: 50%"
-            alt="post-image"
-          />
-        </div>
+    <div
+      class="post d-flex flex-column w-50 mt-5 p-5 border border-3 border-dark rounded-top-pill"
+    >
       <div class="align-self-center pt-5">
         <h2>
           <a
             href="/posts/{{post.id}}"
-            class="hvr-curl-top-right"
+            class="hvr-curl-top-right fs-2"
           >{{post.title}}</a>
         </h2>
+      </div>
+      <div class="align-self-center container">
+        <img
+          src="{{post.image}}"
+          class="rounded mx-auto d-block"
+          style="max-width: 25%"
+          alt="post-image"
+        />
       </div>
       <div class="align-self-center">
         <br />
         <br />
-        <p class="text-justify">
+        <p class="text-justify fs-5">
           {{post.content}}
         </p>
       </div>
       <div class="align-self-center">
-        <h5>Created By:
+        <h5 class="fs-6">Created By:
           {{post.user.username}}
           on
           {{format_date post.date_created}}</h5>

@@ -2,11 +2,11 @@
     {
         "title": "Game On",
         "content": "What is the best PS5 game?",
-        "image": "assets/images/Destiny_2.jpg"
+        "image": "/assets/images/Destiny_2.jpg"
     },
     {
         "title": "Console Wars",
         "content": "What game console do you use?",
-        "image": "assets/images/PS5.webp"
+        "image": "/assets/images/PS5.webp"
     }
 ]

@@ -4,7 +4,7 @@ const newPostOutline = async (event) => {
 
   const title = document.getElementById("post-title").value.trim();
   const content = document.getElementById("post-content").value.trim();
-  const image = document.getElementById("").value.trim();
+  const image = document.getElementById("post-image").value.trim();
 
   if (title && content && image) {
     const postInfo = await fetch("/api/posts", {

@@ -54,26 +54,26 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get single Post by id
+// Get single Post by id with comments
 router.get("/posts/:id", authenticate, async (req, res) => {
   try {
     const findPost = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: User,
-          attributes: ["username"],
-        },
-        {
           model: Comment,
           include: [{ model: User, attributes: ["username"] }],
         },
+        {
+          model: User,
+          attributes: ["username"],
+        },
       ],
-      order: [[{ model: Comment }, "date_created", DESC]],
+      // order: [[{ model: Comment }, "date_created", DESC]],
     });
 
     const post = findPost.get({ plain: true });
 
-    const postComments = postInfo.comments.map((comment) =>
+    const postComments = findPost.comments.map((comment) =>
       comment.get({ plain: true })
     );
 
@@ -87,7 +87,7 @@ router.get("/posts/:id", authenticate, async (req, res) => {
   }
 });
 
-// Update post by post.id
+// Update post by post id
 router.get("/posts/:id/updatePost", authenticate, async (req, res) => {
   try {
     const findPost = await Post.findByPk(req.params.id);
@@ -103,8 +103,8 @@ router.get("/posts/:id/updatePost", authenticate, async (req, res) => {
   }
 });
 
-// Must be logged in to create book
-router.get("/profile/createPost", authorize, async (req, res) => {
+// Must be logged in to create post
+router.get("/profile/createPost", authenticate, async (req, res) => {
   try {
     const userInfo = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
@@ -123,9 +123,9 @@ router.get("/profile/createPost", authorize, async (req, res) => {
 });
 
 // Must be logged in to add comment
-router.get("/posts/:id/addComment", authorize, async (req, res) => {
+router.get("/posts/:id/addComment", authenticate, async (req, res) => {
   try {
-    const postInfo = await Book.findByPk(req.params.id, {
+    const postInfo = await Post.findByPk(req.params.id, {
       include: [
         {
           model: User,
