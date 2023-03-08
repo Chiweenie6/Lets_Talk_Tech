@@ -5,11 +5,13 @@ const deleteCommentButton = async (event) => {
     const commentDelete = await fetch(`/api/comments/${id}`, {
       method: "DELETE",
     });
+    console.log("🚫"+ id + "🚫" );
+    console.log("🥺" + commentDelete + "🥺");
 
     if (commentDelete.ok) {
       document.location.replace("/profile");
     } else {
-      alert("Could not delete Comment 🚫");
+      alert("🚫 Could not delete Comment 🚫");
     }
   }
 };
@@ -25,7 +27,7 @@ const deletePostButton = async (event) => {
     if (postDelete.ok) {
       document.location.replace("/profile");
     } else {
-      alert("Could not delete Post 🚫");
+      alert("🚫 Could not delete Post 🚫");
     }
   }
 };

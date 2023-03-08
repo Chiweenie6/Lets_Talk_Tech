@@ -21,6 +21,7 @@ router.put("/:id", authenticate, async (req, res) => {
     const findPost = await Post.update(
       {
         title: req.body.title,
+        image: req.body.image,
         content: req.body.content,
       },
       {
@@ -29,8 +30,8 @@ router.put("/:id", authenticate, async (req, res) => {
           user_id: req.session.user_id,
         },
       }
-    ).then((updatePost) => {
-      res.json(updatePost);
+    ).then((findPost) => {
+      res.json(findPost);
     });
 
     if (!findPost) {

@@ -36,7 +36,7 @@ router.put("/:id", authenticate, async (req, res) => {
 });
 
 // Must be logged in to delete a comment
-router.delete("/id", authenticate, async (req, res) => {
+router.delete("/:id", authenticate, async (req, res) => {
   try {
     const findComment = await Comment.destroy({
       where: {

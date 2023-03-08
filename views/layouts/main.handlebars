@@ -20,11 +20,13 @@
         class="display-flex justify-space-between align-center p-3"
         style="background-color: white;"
       >
-        <h1>
-          <span role="img" aria-label="stacked-books">🖥️</span>
-          <a href="/" id="siteTitle" class="hvr-curl-top-right">Let's Talk Tech</a>
-
-        </h1>
+        <div>
+          <h1 id="siteTitle" class="row text-start text-primary">🖥️ Let's Talk Tech</h1>
+        </div>
+        <div class="row">
+          <a href="/" class="text-warning text-start">🏠 Homepage 🏠</a>
+          <a href="/profile" class="" style="color: blueviolet;">🧘‍♂️ Dashboard 🧘‍♀️</a>
+        </div>
         <nav class="d-flex justify-content-end p-3">
           <!-- Links become visible when logged in -->
           {{#if logged_in}}

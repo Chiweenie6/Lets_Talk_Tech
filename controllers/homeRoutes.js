@@ -30,30 +30,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Find all comments and add User name
-router.get("/", async (req, res) => {
-  try {
-    const commentInfo = await Comment.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["name"],
-        },
-      ],
-    });
-
-    // Serialize or make the data easier to read
-    const comments = commentInfo.map((comment) => comment.get({ plain: true }));
-
-    res.render("homepage", {
-      comments,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(505).json(err);
-  }
-});
-
 // Get single Post by id with comments
 router.get("/posts/:id", authenticate, async (req, res) => {
   try {
@@ -94,7 +70,6 @@ router.get("/posts/:id/updatePost", authenticate, async (req, res) => {
     const post = findPost.get({ plain: true });
 
     res.render("updatePost", {
-      layout: "main",
       post,
       logged_in: req.session.logged_in,
     });
@@ -146,6 +121,38 @@ router.get("/posts/:id/addComment", authenticate, async (req, res) => {
     res.status(505).json(err);
   }
 });
+
+// Update comment by comment id
+router.get("/comments/:id/updateComment", authenticate, async (req, res) => {
+  try {
+    const findcomment = await Comment.findByPk(req.params.id);
+    const comment = findcomment.get({ plain: true });
+
+    res.render("updateComment", {
+      comment,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(505).json(err);
+  }
+});
+
+// Find comment by id 
+// router.get("/comments/:id", async (req, res) => {
+//   try {
+//     const commentInfo = await Comment.findByPk(req.params.id);
+//     const comment = commentInfo.get({ plain: true });
+
+//     res.render("profile", {
+//       comment,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(505).json(err);
+//   }
+// });
+
+
 
 // Must authenticate username to get to user profile
 router.get("/profile", authenticate, async (req, res) => {

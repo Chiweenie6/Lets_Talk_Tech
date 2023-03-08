@@ -10,12 +10,12 @@
 <div style="background-color: white;">
 <div class="row d-flex justify-content-center">
   <div class="p-2 w-75 text-center">
-    <h2 class="text-success fs-1">Hello, {{name}}! 😀</h2>
+    <h2 class="text-success fs-1">Hello, {{username}}! 😀</h2>
   </div>
 </div>
 <div class="row d-flex justify-content-center">
   <div class="p-2 w-50 text-center">
-    <a href="/profile/createPost" class="titleSize btn">➕ Create New Post ✏️</a>
+    <a href="/profile/createPost" class="titleSize btn border border-top-0">➕ Create New Post ✏️</a>
   </div>
 </div>
 
@@ -26,12 +26,12 @@
     <h3>My posts:</h3>
 
     {{#each posts as |post|}}
-    <div class="row d-flex border rounded-pill mb-3">
+    <div class="row d-flex border rounded-pill mb-3 p-1">
       <div class="d-flex justify-content-between">
         <h4><a href="/posts/{{post.id}}" class="btn btn-lg ">✏️ {{post.title}}</a></h4>
         <div class="d-flex flex-row align-items-center">
           <div class="update-post me-2">
-            <a href="/updatePost/{{post.id}}" class="btn btn-sm btn-info">Update</a>
+            <a href="/posts/{{post.id}}/updatePost" class="btn btn-sm btn-info">Update</a>
           </div>
           <div class="">
             <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
@@ -58,9 +58,9 @@
     <h3>My comments:</h3>
 
     {{#each comments as |comment|}}
-    <div class="row d-flex border rounded-pill mb-3">
+    <div class="row d-flex border rounded-pill mb-3 p-1">
       <div class="d-flex justify-content-between">
-        <h4><a href="/comments/{{comment.id}}" class="btn">💬 {{comment.opinion}}</a></h4>
+        <h4 class="fs-6">💬 {{comment.opinion}}</h4>
         <div class="d-flex flex-row align-items-center">
           <div class="update-comment">
             <a href="/comments/{{comment.id}}/updateComment" class="btn btn-sm btn-info">Update</a>
