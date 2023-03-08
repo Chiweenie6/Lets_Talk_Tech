@@ -5,8 +5,6 @@ const deleteCommentButton = async (event) => {
     const commentDelete = await fetch(`/api/comments/${id}`, {
       method: "DELETE",
     });
-    console.log("🚫"+ id + "🚫" );
-    console.log("🥺" + commentDelete + "🥺");
 
     if (commentDelete.ok) {
       document.location.replace("/profile");

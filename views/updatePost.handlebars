@@ -4,10 +4,10 @@
     <h3 class="text-center text-success titleSize">Update Existing Post:</h3>
 
 <div class="px-5 pt-3" style="background-image: url(''); background-repeat:no-repeat; background-size: contain;">
-    <form class="form pb-5 px-5" id="new-post-outline">
-      <input type="hidden" id="post-id" value="{{post.id}}"/>
+    <form class="form pb-5 px-5" id="update-post-outline">
+      <input type="hidden" id="post-id" data-id="{{post.id}}" value="{{post.id}}"/>
       <div class="form-group">
-        <label for="post-title" style="font-weight: bold;">Post Title:</label>
+        <label for="post-title" id="{{post.id}}" class="" style="font-weight: bold;">Post Title:</label>
         <input class="form-input" type="text" id="post-title" name="post-title" value="{{post.title}}"/>
       </div>
       <div class="form-group">

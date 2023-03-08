@@ -137,23 +137,6 @@ router.get("/comments/:id/updateComment", authenticate, async (req, res) => {
   }
 });
 
-// Find comment by id 
-// router.get("/comments/:id", async (req, res) => {
-//   try {
-//     const commentInfo = await Comment.findByPk(req.params.id);
-//     const comment = commentInfo.get({ plain: true });
-
-//     res.render("profile", {
-//       comment,
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(505).json(err);
-//   }
-// });
-
-
-
 // Must authenticate username to get to user profile
 router.get("/profile", authenticate, async (req, res) => {
   try {

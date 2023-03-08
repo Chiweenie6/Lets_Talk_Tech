@@ -31,7 +31,7 @@
         <h4><a href="/posts/{{post.id}}" class="btn btn-lg ">✏️ {{post.title}}</a></h4>
         <div class="d-flex flex-row align-items-center">
           <div class="update-post me-2">
-            <a href="/posts/{{post.id}}/updatePost" class="btn btn-sm btn-info">Update</a>
+            <a href="/posts/{{post.id}}/updatePost" class="btn btn-sm btn-info" >Update</a>
           </div>
           <div class="">
             <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
@@ -62,7 +62,7 @@
       <div class="d-flex justify-content-between">
         <h4 class="fs-6">💬 {{comment.opinion}}</h4>
         <div class="d-flex flex-row align-items-center">
-          <div class="update-comment">
+          <div class="update-comment me-2">
             <a href="/comments/{{comment.id}}/updateComment" class="btn btn-sm btn-info">Update</a>
           </div>
           <div class="">
