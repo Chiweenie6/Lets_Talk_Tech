@@ -23,7 +23,14 @@ A blog site where users can post and comment on anything tech, Model-View-Contro
 ## Usage
   Users can post stories and articles about technology. Others can aslo post their own articles about technology. Users can post comments on these posts. Allows different people to learn, read and discuss different types of technology.
   
-  Images:  
+  Images:  ![image](https://user-images.githubusercontent.com/113393706/224158350-bc8b99f6-2d2e-44d4-a008-18c7d0aa931f.png)  
+  ![image](https://user-images.githubusercontent.com/113393706/224160284-fbf9c153-fa99-4ef1-ad60-ac3a37d1f760.png)  
+  ![image](https://user-images.githubusercontent.com/113393706/224160582-e14b8f1c-a9ee-4314-a7e4-326b5bca5bc4.png)  
+  ![image](https://user-images.githubusercontent.com/113393706/224160956-44dce512-103a-4cd9-a8cf-ef79ffa266d7.png)
+
+
+
+
   
 
    
