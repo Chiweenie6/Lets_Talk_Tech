@@ -1,4 +1,4 @@
-// Create new post comment
+// Create new comment on a post
 const newCommentForm = async function (event) {
   event.preventDefault();
 

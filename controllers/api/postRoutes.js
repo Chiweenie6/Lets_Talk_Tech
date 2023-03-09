@@ -15,7 +15,7 @@ router.post("/", authenticate, async (req, res) => {
   }
 });
 
-// Update existing post
+// Update existing post from profile
 router.put("/:id", authenticate, async (req, res, next) => {
   try {
     const findPost = await Post.update(

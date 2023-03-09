@@ -1,19 +1,27 @@
-<form id="update-comment-form" class="card">
-    <div class="card-header">
-      <h3>Update Comment</h3>
+{{!-- Update existing Comment form --}}
+<div>
+  <div class="row d-flex justify-content-center">
+    <div class="post d-flex flex-column mb-3 w-50">
+      <div class="align-self-center">
+        <h2 class="text-center text-success fs-1">Update Comment</h2>
+      </div>
     </div>
+  </div>
 
-    <div class="card-body">
-      <input type="hidden" name="comment-id" id="comment-id" value="{{comment.id}}" data-id="{{comment.id}}"/>
+  <div class="d-flex justify-content-center">
+    <form id="update-comment-form" class="form d-flex w-50">
+      <div class="card-body">
+        <input type="hidden" name="comment-id" id="comment-id" value="{{comment.id}}" data-id="{{comment.id}}"/>
 
-      <label class="form-label" for="comment-opinion" style="font-weight: bold;">Comment Opinion</label>
+        <div class="form-group">
+          <label class="form-label" for="comment-opinion" style="font-weight: bold;" >Comment Opinion:</label>
+          <textarea name="comment-opinion" class="form-input" id="comment-opinion" >{{comment.opinion}}</textarea>
+        </div>
 
-      <textarea name="comment-opinion" class="form-input" id="comment-opinion"
-      >{{comment.opinion}}</textarea>
-
-      <button id="comment-update" type="submit" class="btn btn-success">Update
-        Comment</button>
-        <a href="/profile" type="button" id="" class="btn btn-danger">Cancel</a>
-    </div>
-  </form>
-</div>
+        <div class="form-group d-flex justify-content-center">
+           <button id="comment-update" type="submit" class="btn btn-success me-3">Update Comment</button>
+            <a href="/profile" type="button" id="" class="btn btn-danger ms-3">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>

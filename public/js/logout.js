@@ -1,3 +1,4 @@
+// Log out
 const logoutForm = async () => {
   const logoutCheck = await fetch("/api/users/logout", {
     method: "POST",

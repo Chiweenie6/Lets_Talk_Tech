@@ -19,6 +19,7 @@
   </div>
 </div>
 
+{{!-- Show User's posts on User's profile page --}}
 <div>
   {{#if posts.length}}
   <div class="post-list row d-flex justify-content-center">
@@ -49,7 +50,7 @@
 </div>
 </div>
 
-
+{{!-- Show User's comments on User's profile --}}
 <div style="background-color: white;">
   <div>
   {{#if comments.length}}
@@ -60,14 +61,18 @@
     {{#each comments as |comment|}}
     <div class="row d-flex border rounded-pill mb-3 p-1">
       <div class="d-flex justify-content-between">
+        <div class="container">
         <h4 class="fs-6">💬 {{comment.opinion}}</h4>
+        </div>
+        <div class="">
         <div class="d-flex flex-row align-items-center">
-          <div class="update-comment me-2">
+          <div class="col update-comment me-2">
             <a href="/comments/{{comment.id}}/updateComment" class="btn btn-sm btn-info">Update</a>
           </div>
-          <div class="">
+          <div class="col">
             <button class="btn btn-sm btn-danger" data-id="{{comment.id}}">DELETE</button>
           </div>
+        </div>
         </div>
       </div>
     </div>
