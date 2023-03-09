@@ -16,7 +16,7 @@ A blog site where users can post and comment on anything tech, Model-View-Contro
 ## Description
   This application uses Model-View-Control to allow users to create, get, update and delete posts and comments on stories about different types of technology. Sequelize for data modeling, handlebars.js as the template engine to view, and express for control.
   
-  Deployed app Link:  
+  Deployed app Link:   https://lets-talk-tech.herokuapp.com/
   
 
 
