@@ -14,14 +14,14 @@ A blog site where users can post and comment on anything tech, Model-View-Contro
   - [License](#License)
 
 ## Description
-  This application uses Model-View-Control to allow users to post and comment on stories about different types of technology. Sequelize for data modeling, handlebars.js as the template engine to view, and express for control.
+  This application uses Model-View-Control to allow users to create, get, update and delete posts and comments on stories about different types of technology. Sequelize for data modeling, handlebars.js as the template engine to view, and express for control.
   
   Deployed app Link:  
   
 
 
 ## Usage
-  Users can post stories and articles about technology. Others can aslo post their own articles about technology. Users can post comments on these posts. Allows different people to learn, read and discuss different types of technology.
+  Users can post stories and articles about technology. Others can also post their own articles about technology. Users can post comments on these posts. Allows different people to learn, read and discuss different types of technology.
   
   Images:  ![image](https://user-images.githubusercontent.com/113393706/224158350-bc8b99f6-2d2e-44d4-a008-18c7d0aa931f.png)  
   ![image](https://user-images.githubusercontent.com/113393706/224160284-fbf9c153-fa99-4ef1-ad60-ac3a37d1f760.png)  
