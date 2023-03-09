@@ -2,26 +2,29 @@
 const updateCommentForm = async (event) => {
   event.preventDefault();
 
-console.log("🚫🚫🚫🚫🚫🚫🚫")
+  const comment_id = document.getElementById("comment-id").value;
+  const opinion = document.getElementById("comment-opinion").value.trim();
 
-  if (event.target.hasAttribute("data-id")) {
-    const id = event.target.getAttribute("data-id");
-    const commentInfo = await fetch(`/api/comments/${id}`, {
-      method: "PUT",
-      body: JSON.stringify({ opinion }),
-      headers: { "Content-Type": "application/json" },
-    });
+  if (opinion) {
+    try {
+      const commentInfo = await fetch(`/api/comments/${comment_id}`, {
+        method: "PUT",
+        body: JSON.stringify({ opinion }),
+        headers: { "Content-Type": "application/json" },
+      });
 
-    console.log("🚫" + commentInfo);
-
-    if (commentInfo.ok) {
-      document.location.replace("/profile");
-    } else {
-      alert("🚫 Could not update Comment 🚫");
+      if (commentInfo.ok) {
+        // alert("Comment Updated 👍");
+        document.location.replace("/profile");
+      } else {
+        alert("🚫 Could not update Comment 🚫");
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 };
 
 document
-  .querySelector(".update-comment-form")
-  .addEventListener("click", updateCommentForm);
+  .getElementById("update-comment-form")
+  .addEventListener("submit", updateCommentForm);

@@ -18,12 +18,19 @@ router.post("/", authenticate, async (req, res) => {
 // Update existing post
 router.put("/:id", authenticate, async (req, res, next) => {
   try {
-    const findPost = await Post.update({
+    const findPost = await Post.update(
+      {
+        title: req.body.title,
+        image: req.body.image,
+        content: req.body.content,
+      },
+      {
         where: {
           id: req.params.id,
           user_id: req.session.user_id,
         },
-      });
+      }
+    );
 
     if (!findPost) {
       res.status(404).json({ message: "🚫 Could not Update Post 🚫" });

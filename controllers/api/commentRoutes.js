@@ -18,12 +18,17 @@ router.post("/", async (req, res) => {
 // Must be logged in to update a comment
 router.put("/:id", authenticate, async (req, res) => {
   try {
-    const findComment = await Comment.update({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
+    const findComment = await Comment.update(
+      {
+        opinion: req.body.opinion,
       },
-    });
+      {
+        where: {
+          id: req.params.id,
+          user_id: req.session.user_id,
+        },
+      }
+    );
 
     if (!findComment) {
       res.status(404).json({ message: "🚫 Comment ID Not Found 🚫" });
